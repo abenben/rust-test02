@@ -12,4 +12,5 @@ Cargo.lock
 /build/
 /dist/
 /liba.egg-info/
+/hello.egg-info/
 /__pycache__/
