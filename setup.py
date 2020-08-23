@@ -3,16 +3,16 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='liba',
+    name='hello',
     version='0.1.0',
     license='none',
-    description='liba',
+    description='hello',
 
     author='abenben',
     author_email='abenbenben@gmail.com',
     url='https://github.com/abenben/rust-test02',
 
-    packages=find_packages(where='.'),
+    packages=find_packages(where=''),
     package_dir={'': '.'},
 
     install_requires=[],
@@ -20,7 +20,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'liba = liba',
+            'hello = hello',
         ]
     },
 )

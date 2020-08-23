@@ -1,16 +1,25 @@
 use pyo3::prelude::*;
-use pyo3::types::IntoPyDict;
+use pyo3::types::PyList;
+use std::env;
 
 fn main() -> PyResult<()> {
     let gil = Python::acquire_gil();
     let py = gil.python();
-    let sys = py.import("sys")?;
-    let version: String = sys.get("version")?.extract()?;
 
-    let locals = [("os", py.import("os")?)].into_py_dict(py);
-    let code = "os.getenv('USER') or os.getenv('USERNAME') or 'Unknown'";
-    let user: String = py.eval(code, None, Some(&locals))?.extract()?;
+    let syspath: &PyList = py.import("sys")
+        .unwrap()
+        .get("path")
+        .unwrap()
+        .try_into()
+        .unwrap();
 
-    println!("Hello {}, I'm Python {}", user, version);
+    let path = env::current_dir()?;
+
+    syspath.insert(0, format!("{}", path.display())).unwrap();
+    
+    let hello = py.import("hello")?;
+    let response: String = hello.call1("say", ("abenben!", ))?.extract()?;
+    println!("{}", response);
+
     Ok(())
 }
