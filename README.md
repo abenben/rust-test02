@@ -1,1 +1,5 @@
-# rust-test02
+# RustからPythonを呼び出す
+
+```bash
+cargo run --release
+```
