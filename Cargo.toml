@@ -1,7 +1,7 @@
 [package]
-name = "test02"
+name = "rust-test02"
 version = "0.1.0"
-authors = ["abenben <abenbenben@gmail.com>"]
+authors = ["abenben"]
 edition = "2018"
 
 [dependencies]
